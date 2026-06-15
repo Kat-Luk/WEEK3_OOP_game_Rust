@@ -12,7 +12,7 @@ fn main() {
     let mut choice = String::new();
     io::stdin().read_line(&mut choice).expect("Error reading input.");
     let choice = choice.trim();
-    println!("Choose your country:");
+    println!("Choose your country: ");
     match choice {
         "1" => {
             let name = finland.get_name();

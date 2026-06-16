@@ -27,7 +27,7 @@ impl Player {
                 let army = country.get_army_size();
                 println!("An inspection has been completed..");    
                 println!("Country information:");    
-                println!("Country: {}", name);
+                println!("{}", name);
                 println!("Population: {}", population);
                 println!("Army size: {}", army);
             }

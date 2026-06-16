@@ -18,8 +18,7 @@ impl Country {
     }
 
     pub fn get_name(&self) -> &String {
-        return &self.name
-        ;
+        return &self.name;
     }
 
     pub fn get_population(&self) -> &i64 {

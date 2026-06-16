@@ -7,13 +7,13 @@ pub struct Country {
 }
 
 impl Country {
-    pub fn new(name: &str, population: &i64, army_size: &i64, conquered_countries: &Vec<String>, is_conquered: &bool) -> Self {
+    pub fn new(name: String, population: i64, army_size: i64, conquered_countries: Vec<String>, is_conquered: bool) -> Self {
         Self {
             name: name.to_string(),
-            population: *population,
-            army_size: *army_size,
+            population: population,
+            army_size: army_size,
             conquered_countries: conquered_countries.to_vec(),
-            is_conquered: *is_conquered,
+            is_conquered: is_conquered,
         }
     }
 

@@ -17,15 +17,16 @@ impl Country {
         }
     }
 
-    pub fn get_name(&self) -> String {
-        return self.name.clone();
+    pub fn get_name(&self) -> &String {
+        return &self.name
+        ;
     }
 
-    pub fn get_population(&self) -> i64 {
-        return self.population;
+    pub fn get_population(&self) -> &i64 {
+        return &self.population;
     }
 
-    pub fn get_army_size(&self) -> i64  {
-        return self.army_size;
+    pub fn get_army_size(&self) -> &i64  {
+        return &self.army_size;
     }
 }

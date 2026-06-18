@@ -80,7 +80,7 @@ impl Player {
                         if "Finland" == self_name {
                             println!("You can't spy on your own nation!");
                         } else {
-                            println!("Espionage successful");
+                            println!("Espionage successful.");
                             inspected_country = Some(game_map.get_country_by_index(2));    
                         }
                     }

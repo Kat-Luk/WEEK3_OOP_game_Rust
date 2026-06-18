@@ -5,9 +5,9 @@ pub struct GameMap {
 }
 
 impl GameMap {
-    pub fn new(countries: Vec<Country>) -> Self {
+    pub fn new() -> Self {
         Self {
-            countries: countries.to_vec(),
+            countries: Vec::new(),
         }
     }
 

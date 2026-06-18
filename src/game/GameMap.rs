@@ -7,7 +7,12 @@ pub struct GameMap {
 impl GameMap {
     pub fn new() -> Self {
         Self {
-            countries: Vec::new(),
+            countries: vec![
+                Country::new(String::from("Denmark"), 6000000, 50000, vec![], false),
+                Country::new(String::from("Finland"), 5600000, 900000, vec![], false),
+                Country::new(String::from("Norway"), 5500000, 100000, vec![], false),
+                Country::new(String::from("Sweden"), 10000000, 200000, vec![], false),
+            ],
         }
     }
 
@@ -20,9 +25,5 @@ impl GameMap {
 
     pub fn get_country_by_index(&self, index: usize) -> Country {
         self.countries[index].clone()
-    }
-
-    pub fn add_country(&mut self, country: Country) {
-        self.countries.push(country);
     }
 }

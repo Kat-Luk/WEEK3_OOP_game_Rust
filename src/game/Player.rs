@@ -26,7 +26,7 @@ impl Player {
                 let country = self.get_country();
                 let name = country.get_name();
                 let population = country.get_population();
-                println!("An inspection has been completed..");
+                println!("Espionage successful.");
                 let army = country.get_army_size();
                     
                 println!("Country information:");    
@@ -68,7 +68,7 @@ impl Player {
                         if "Denmark" == self_name {
                             println!("You can't spy on your own nation!");
                         } else {
-                            println!("An inspection has been completed..");
+                            println!("Espionage successful.");
                             inspected_country = Some(game_map.get_country_by_index("1"));    
                         }
                     }
@@ -76,7 +76,7 @@ impl Player {
                         if "Finland" == self_name {
                             println!("You can't spy on your own nation!");
                         } else {
-                            println!("An inspection has been completed..");
+                            println!("Espionage successful.");
                             inspected_country = Some(game_map.get_country_by_index("2"));    
                         }
                     }
@@ -84,7 +84,7 @@ impl Player {
                         if "Norway" == self_name {
                             println!("You can't spy on your own nation!");
                         } else {
-                            println!("An inspection has been completed..");
+                            println!("Espionage successful.");
                             inspected_country = Some(game_map.get_country_by_index("3"));    
                         }
                     }
@@ -92,7 +92,7 @@ impl Player {
                         if "Sweden" == self_name {
                             println!("You can't spy on your own nation!");
                         } else {
-                            println!("An inspection has been completed..");
+                            println!("Espionage successful.");
                             inspected_country = Some(game_map.get_country_by_index("4"));
                         }
                     }

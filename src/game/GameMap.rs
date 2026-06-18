@@ -27,4 +27,8 @@ impl GameMap {
             _ => panic!("Invalid index"),
         }
     }
+
+    pub fn add_country(&mut self, country: Country) {
+        self.countries.push(country);
+    }
 }

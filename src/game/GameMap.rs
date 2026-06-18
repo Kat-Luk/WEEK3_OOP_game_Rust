@@ -18,12 +18,12 @@ impl GameMap {
         println!("4) {}", self.countries[3].get_name());
     }
 
-    pub fn get_country_by_index(&self, index: &str) -> Country {
+    pub fn get_country_by_index(&self, index: usize) -> Country {
         match index {
-            "1" => return self.countries[0].clone(),
-            "2" => return self.countries[1].clone(),
-            "3" => return self.countries[2].clone(),
-            "4" => return self.countries[3].clone(),
+            1 => return self.countries[0].clone(),
+            2 => return self.countries[1].clone(),
+            3 => return self.countries[2].clone(),
+            4 => return self.countries[3].clone(),
             _ => panic!("Invalid index"),
         }
     }

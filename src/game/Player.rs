@@ -72,8 +72,8 @@ impl Player {
                         if "Denmark" == self_name {
                             println!("You can't spy on your own nation!");
                         } else {
-                            println!("Espionage successful");
-                            inspected_country = Some(game_map.get_country_by_index("1"));    
+                            println!("Espionage successful.");
+                            inspected_country = Some(game_map.get_country_by_index(1));    
                         }
                     }
                     "2" => {
@@ -81,7 +81,7 @@ impl Player {
                             println!("You can't spy on your own nation!");
                         } else {
                             println!("Espionage successful");
-                            inspected_country = Some(game_map.get_country_by_index("2"));    
+                            inspected_country = Some(game_map.get_country_by_index(2));    
                         }
                     }
                     "3" => {
@@ -89,7 +89,7 @@ impl Player {
                             println!("You can't spy on your own nation!");
                         } else {
                             println!("Espionage successful");
-                            inspected_country = Some(game_map.get_country_by_index("3"));    
+                            inspected_country = Some(game_map.get_country_by_index(3));    
                         }
                     }
                     "4" => {
@@ -97,7 +97,7 @@ impl Player {
                             println!("You can't spy on your own nation!");
                         } else {
                             println!("Espionage successful");
-                            inspected_country = Some(game_map.get_country_by_index("4"));
+                            inspected_country = Some(game_map.get_country_by_index(4));
                         }
                     }
                     _ => println!("Incorect input"),

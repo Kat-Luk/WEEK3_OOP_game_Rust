@@ -1,3 +1,4 @@
+#[derive(Clone)]
 pub struct Country {
     name: String,
     population: i64,

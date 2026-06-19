@@ -104,7 +104,8 @@ impl Player {
         let my_name = self.country.get_name().clone();
         let target_name = target_country.get_name().clone();
 
-        if target_country.get_is_conquered() {
+        let already_conquered = self.country.get_conquered_nations().contains(&target_name);
+        if already_conquered {
             println!("This land is already conquered.");
         } else if my_name == target_name {
             println!("You cannot invade your own land.");

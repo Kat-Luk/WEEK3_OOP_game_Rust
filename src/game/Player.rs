@@ -109,8 +109,6 @@ impl Player {
         } else if my_name == target_name {
             println!("You cannot invade your own land.");
         } else if self.country.get_army_size() > target_country.get_army_size() {
-            let mut conquered_target = target_country.clone();
-
             let mut conquered = self.country.get_conquered_nations();
             conquered.push(target_name.clone());
             self.country.set_conquered_nations(conquered);

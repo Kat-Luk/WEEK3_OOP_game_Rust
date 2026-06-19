@@ -102,14 +102,15 @@ impl Player {
 
     pub fn conquer_nation(&mut self, target_country: Country, country_name: String) {
         let my_name = self.country.get_name().clone();
-   
+        let target_name = target_country.get_name().clone();
+
         if target_country.get_is_conquered() {
             println!("This land is already conquered.");
-        } else if my_name == country_name {
+        } else if my_name == target_name {
             println!("You cannot invade your own land.");
         } else if self.country.get_army_size() > target_country.get_army_size() {
             let mut conquered = self.country.get_conquered_nations();
-            conquered.push(country_name.clone());
+            conquered.push(target_name.clone());
             self.country.set_conquered_nations(conquered);
 
             let new_population = self.country.get_population() + target_country.get_population();
@@ -117,11 +118,11 @@ impl Player {
             self.country.set_population(new_population);
             self.country.set_army_size(new_army);
 
-            println!("You have conquered {}.", country_name);
+            println!("You have conquered {}.", target_name);
         } else if self.country.get_army_size() == target_country.get_army_size() {
             println!("The armies are equally matched. Neither side gains ground.");
         } else {
-            println!("You have lost your war against {}. You have been conquered.", country_name);
+            println!("You have lost your war against {}. You have been conquered.", target_name);
         }
     }
 }

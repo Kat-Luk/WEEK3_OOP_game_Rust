@@ -99,17 +99,17 @@ impl Player {
             println!("Army size: {}", army);  
         }
     }
-    
+
     pub fn conquer_nation(&mut self, target_country: Country, country_name: String) {
         let my_name = self.country.get_name().clone();
-
+   
         if target_country.get_is_conquered() {
             println!("This land is already conquered.");
         } else if my_name == country_name {
             println!("You cannot invade your own land.");
         } else if self.country.get_army_size() > target_country.get_army_size() {
             let mut conquered = self.country.get_conquered_nations();
-            conquered.push(target_country.get_name().clone());
+            conquered.push(country_name.clone());
             self.country.set_conquered_nations(conquered);
 
             let new_population = self.country.get_population() + target_country.get_population();

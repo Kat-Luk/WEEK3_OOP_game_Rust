@@ -55,4 +55,11 @@ impl Country {
     pub fn set_is_conquered(&mut self, is_conquered: bool) {
         self.is_conquered = is_conquered;
     }
+
+    pub fn expand_army(&mut self) {
+        if self.get_army_size() < self.get_population() {
+            let mut new_army = self.get_army_size() + 50000;
+            self.set_army_size(new_army);
+        }
+    }
 }

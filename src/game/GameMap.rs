@@ -26,4 +26,22 @@ impl GameMap {
     pub fn get_country_by_index(&self, index: usize) -> Country {
         self.countries[index].clone()
     }
+
+    pub fn get_countries(&self) -> &Vec<Country> {
+        &self.countries
+    }
+
+    pub fn set_countries(&mut self, countries: Vec<Country>) {
+        self.countries = countries;
+    }
+
+    pub fn other_countries_turn(&mut self, my_name: &String) {
+        let mut all_countries = self.get_countries().clone();
+        for country in all_countries.iter_mut() {
+            if country.get_name() != my_name && !country.get_is_conquered() {
+                country.expand_army();
+            }  
+        }
+        self.set_countries(all_countries);
+    }
 }

@@ -43,20 +43,21 @@ impl Player {
         }
     }
 
-    pub fn spy(&self) {
+    pub fn spy(&self, game_map: &GameMap) {
         let mut inspected_country: Option<Country> = None;
-        
-        let mut game_map = GameMap::new();
-
-        let country = self.get_country();
-        let self_name = country.get_name();
-        game_map.list_countries();  
+        let player_country = self.get_country(); 
+        let my_name = player_country.get_name();
+        for i in 0..4 {
+            if game_map.get_country_by_index(i).get_name() == my_name {
+                let my_country_game_map = game_map.get_country_by_index(i);
+            }  
+        } 
         let mut choice = String::new();
         io::stdin().read_line(&mut choice).expect("Error reading input.");
         let choice = choice.trim(); 
         match choice {
             "1" => {
-                if "Denmark" == self_name {
+                if "Denmark" == my_name {
                     println!("You can't spy on your own nation!");
                 } else {
                     println!("Espionage successful.");
@@ -64,7 +65,7 @@ impl Player {
                 }
             }
             "2" => {
-                if "Finland" == self_name {
+                if "Finland" == my_name {
                     println!("You can't spy on your own nation!");
                 } else {
                     println!("Espionage successful.");
@@ -72,7 +73,7 @@ impl Player {
                 }
             }
             "3" => {
-                if "Norway" == self_name {
+                if "Norway" == my_name {
                     println!("You can't spy on your own nation!");
                 } else {
                     println!("Espionage successful.");
@@ -80,7 +81,7 @@ impl Player {
                 }
             }
             "4" => {
-                if "Sweden" == self_name {
+                if "Sweden" == my_name {
                     println!("You can't spy on your own nation!");
                 } else {
                     println!("Espionage successful.");
@@ -100,11 +101,11 @@ impl Player {
         }
     }
 
-    pub fn conquer_nation(&mut self, target_country: Country, country_name: String) {
+    pub fn conquer_nation(&mut self, target_country: Country, country_name: String, game_map: &mut GameMap) { 
         let my_name = self.country.get_name().clone();
         let target_name = target_country.get_name().clone();
-
         let already_conquered = self.country.get_conquered_nations().contains(&target_name);
+
         if already_conquered {
             println!("This land is already conquered.");
         } else if my_name == target_name {
@@ -119,6 +120,13 @@ impl Player {
             self.country.set_population(new_population);
             self.country.set_army_size(new_army);
 
+            let mut all_countries = game_map.get_countries().clone();
+            for country in all_countries.iter_mut() {
+                if country.get_name() == &target_name {
+                    country.set_is_conquered(true);
+                }
+            }
+            game_map.set_countries(all_countries);
             println!("You have conquered {}.", target_name);
         } else if self.country.get_army_size() == target_country.get_army_size() {
             println!("The armies are equally matched. Neither side gains ground.");

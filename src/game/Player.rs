@@ -132,6 +132,8 @@ impl Player {
             println!("The armies are equally matched. Neither side gains ground.");
         } else {
             println!("You have lost your war against {}. You have been conquered.", target_name);
+            println!("Game over!");
+             std::process::exit(0);
         }
     }
 }

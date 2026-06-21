@@ -101,17 +101,15 @@ impl Player {
         }
     }
 
-    pub fn conquer_nation(&mut self, mut target_country: Country, country_name: String) -> Option<Country> {
+    pub fn conquer_nation(&mut self, target_country: Country, country_name: String, game_map: &mut GameMap) { 
         let my_name = self.country.get_name().clone();
         let target_name = target_country.get_name().clone();
         let already_conquered = self.country.get_conquered_nations().contains(&target_name);
 
         if already_conquered {
             println!("This land is already conquered.");
-            None
         } else if my_name == target_name {
             println!("Even your sick desires need boundaries.");
-            None
         } else if self.country.get_army_size() > target_country.get_army_size() {
             let mut conquered = self.country.get_conquered_nations();
             conquered.push(target_name.clone());
@@ -122,21 +120,20 @@ impl Player {
             self.country.set_population(new_population);
             self.country.set_army_size(new_army);
 
-            target_country.set_is_conquered(true);
+            let mut all_countries = game_map.get_countries().clone();
+            for country in all_countries.iter_mut() {
+                if country.get_name() == &target_name {
+                    country.set_is_conquered(true);
+                }
+            }
+            game_map.set_countries(all_countries);
             println!("You have conquered {}", target_name);
-            Some(target_country)
         } else if self.country.get_army_size() == target_country.get_army_size() {
             println!("The armies are equally matched. Neither side gains ground.");
-            None
         } else {
-            self.country.set_is_conquered(true);
             println!("You have lost your war against {}. You have been conquered.", target_name);
             println!("Game over!");
-            None
+             std::process::exit(0);
         }
-    }
-
-    pub fn expand_military(&mut self) {
-        self.country.expand_military();
     }
 }

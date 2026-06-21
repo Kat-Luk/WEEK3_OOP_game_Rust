@@ -38,6 +38,7 @@ impl GameMap {
     pub fn other_countries_turn(&mut self, my_name: &String) {
         let mut all_countries = self.get_countries().clone();
         for country in all_countries.iter_mut() {
+            println!("DEBUG: checking {} - conquered: {}, army: {}", country.get_name(), country.get_is_conquered(), country.get_army_size());
             if country.get_name() != my_name && !country.get_is_conquered() {
                 country.expand_army();
             }  

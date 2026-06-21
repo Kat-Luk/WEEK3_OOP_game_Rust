@@ -129,4 +129,8 @@ impl Player {
             std::process::exit(0);
         }
     }
+
+    pub fn expand_military(&mut self) {
+        self.country.expand_military();
+    }
 }

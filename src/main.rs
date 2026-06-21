@@ -71,11 +71,12 @@ fn main() {
                 }
             }
             "3" => {
+                player.expand_military();
                 let my_name = player.get_country().get_name().clone();
                 let mut all_countries = game_map.get_countries().clone();
                 for country in all_countries.iter_mut() {
                     if country.get_name() == &my_name {
-                        country.expand_military();
+                        country.set_army_size(*player.get_country().get_army_size());
                     }
                 }
                 game_map.set_countries(all_countries);

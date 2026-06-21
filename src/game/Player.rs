@@ -28,8 +28,8 @@ impl Player {
                 let population = country.get_population();
                 println!("An inspection has been completed..");
                 let army = country.get_army_size();
-                    
-                println!("Country information:");    
+
+                println!("Country information:");
                 println!("Name: {}", name);
                 println!("Population: {}", population);
                 println!("Army size: {}", army);
@@ -45,23 +45,18 @@ impl Player {
 
     pub fn spy(&self, game_map: &GameMap) {
         let mut inspected_country: Option<Country> = None;
-        let player_country = self.get_country(); 
+        let player_country = self.get_country();
         let my_name = player_country.get_name();
-        for i in 0..4 {
-            if game_map.get_country_by_index(i).get_name() == my_name {
-                let my_country_game_map = game_map.get_country_by_index(i);
-            }  
-        } 
         let mut choice = String::new();
         io::stdin().read_line(&mut choice).expect("Error reading input.");
-        let choice = choice.trim(); 
+        let choice = choice.trim();
         match choice {
             "1" => {
                 if "Denmark" == my_name {
                     println!("You can't spy on your own nation!");
                 } else {
                     println!("Espionage successful.");
-                    inspected_country = Some(game_map.get_country_by_index(0));    
+                    inspected_country = Some(game_map.get_country_by_index(0));
                 }
             }
             "2" => {
@@ -69,7 +64,7 @@ impl Player {
                     println!("You can't spy on your own nation!");
                 } else {
                     println!("Espionage successful.");
-                    inspected_country = Some(game_map.get_country_by_index(1));    
+                    inspected_country = Some(game_map.get_country_by_index(1));
                 }
             }
             "3" => {
@@ -77,7 +72,7 @@ impl Player {
                     println!("You can't spy on your own nation!");
                 } else {
                     println!("Espionage successful.");
-                    inspected_country = Some(game_map.get_country_by_index(2));    
+                    inspected_country = Some(game_map.get_country_by_index(2));
                 }
             }
             "4" => {
@@ -97,11 +92,11 @@ impl Player {
             println!("Country information:");
             println!("Name: {}", name);
             println!("Population: {}", population);
-            println!("Army size: {}", army);  
+            println!("Army size: {}", army);
         }
     }
 
-    pub fn conquer_nation(&mut self, target_country: Country, country_name: String, game_map: &mut GameMap) { 
+    pub fn conquer_nation(&mut self, target_country: Country, country_name: String) {
         let my_name = self.country.get_name().clone();
         let target_name = target_country.get_name().clone();
         let already_conquered = self.country.get_conquered_nations().contains(&target_name);
@@ -120,20 +115,13 @@ impl Player {
             self.country.set_population(new_population);
             self.country.set_army_size(new_army);
 
-            let mut all_countries = game_map.get_countries().clone();
-            for country in all_countries.iter_mut() {
-                if country.get_name() == &target_name {
-                    country.set_is_conquered(true);
-                }
-            }
-            game_map.set_countries(all_countries);
             println!("You have conquered {}", target_name);
         } else if self.country.get_army_size() == target_country.get_army_size() {
             println!("The armies are equally matched. Neither side gains ground.");
         } else {
             println!("You have lost your war against {}. You have been conquered.", target_name);
             println!("Game over!");
-             std::process::exit(0);
+            std::process::exit(0);
         }
     }
 }

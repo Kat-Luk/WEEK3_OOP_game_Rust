@@ -40,7 +40,7 @@ impl GameMap {
         for country in all_countries.iter_mut() {
             if country.get_name() != my_name && !country.get_is_conquered() {
                 country.expand_army();
-            }  
+            }
         }
         self.set_countries(all_countries);
     }

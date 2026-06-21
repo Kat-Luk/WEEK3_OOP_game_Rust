@@ -57,8 +57,8 @@ impl Country {
     }
 
     pub fn expand_army(&mut self) {
-        if self.get_army_size() < self.get_population() {
-            let mut new_army = self.get_army_size() + 50000;
+        if !self.get_is_conquered() && self.get_army_size() < self.get_population() {
+            let new_army = self.get_army_size() + 50000;
             self.set_army_size(new_army);
         }
     }

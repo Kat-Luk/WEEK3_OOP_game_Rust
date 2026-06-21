@@ -102,6 +102,7 @@ impl Player {
     }
 
     pub fn conquer_nation(&mut self, target_country: Country, country_name: String) {
+        println!("DEBUG conquer_nation called: target={}, army_mine={}, army_theirs={}", target_country.get_name(), self.country.get_army_size(), target_country.get_army_size());
         let my_name = self.country.get_name().clone();
         let target_name = target_country.get_name().clone();
         let already_conquered = self.country.get_conquered_nations().contains(&target_name);

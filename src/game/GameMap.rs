@@ -39,7 +39,7 @@ impl GameMap {
         let mut all_countries = self.get_countries().clone();
         for country in all_countries.iter_mut() {
             if country.get_name() != my_name && !country.get_is_conquered() {
-                country.expand_army();
+                country.expand_military();
             }  
         }
         self.set_countries(all_countries);

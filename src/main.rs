@@ -75,7 +75,7 @@ fn main() {
                 let mut all_countries = game_map.get_countries().clone();
                 for country in all_countries.iter_mut() {
                     if country.get_name() == &my_name {
-                        country.expand_army();
+                        country.expand_military();
                     }
                 }
                 game_map.set_countries(all_countries);

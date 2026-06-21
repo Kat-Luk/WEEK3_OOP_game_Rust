@@ -56,11 +56,8 @@ impl Country {
         self.is_conquered = is_conquered;
     }
 
-    pub fn expand_army(&mut self) {
-        if self.get_is_conquered() {
-            panic!("expand_army called on conquered country: {}", self.name);
-        }
-        if self.get_army_size() < self.get_population() {
+    pub fn expand_military(&mut self) {
+        if !self.get_is_conquered() && self.get_army_size() < self.get_population() {
             let new_army = self.get_army_size() + 50000;
             self.set_army_size(new_army);
         }
